@@ -1,6 +1,6 @@
 package fi.oulu.smartkitchen.recipier.controller;
 
-import fi.oulu.smartkitchen.recipier.model.CoreNLPTagger;
+import fi.oulu.smartkitchen.recipier.CoreNLPTagger;
 import fi.oulu.smartkitchen.recipier.model.RecipeSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CoreNLPController {
 
-    private final Logger logger = LoggerFactory.getLogger(RecipeReaderController.class);
+    private final Logger logger = LoggerFactory.getLogger(CoreNLPController.class);
 
     @RequestMapping(value="/corenlp", method = RequestMethod.POST, headers = "Content-Type=application/json")
     public String coreTagger(@RequestBody RecipeSource source) {
