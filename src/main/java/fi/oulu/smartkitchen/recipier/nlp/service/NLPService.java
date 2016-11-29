@@ -38,9 +38,6 @@ public class NLPService {
             e.printStackTrace();
         }
 
-        //TODO CORENLP mapping
-        toolMappedTokens.put("CORENLP", new ArrayList<>());
-
         return toolMappedTokens;
     }
 }
