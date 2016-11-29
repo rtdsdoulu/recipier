@@ -35,7 +35,7 @@ public class CoreNLPTagger {
         String[] taggedTokens = taggedString.split(" ");
 
         // Iterate through all the words in the target text
-        int seqNo = 0;
+        int seqNo = 1;
         for(String token : taggedTokens) {
                 TaggedToken tagToken = new TaggedToken();
                 tagToken.setSequenceNo(seqNo++);
