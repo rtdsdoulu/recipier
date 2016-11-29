@@ -23,9 +23,15 @@ public class NLPService {
 
         //NLP4J
         NLP4JTokenizer tokenizer = new NLP4JTokenizer();
+        //CoreNLP
+        CoreNLPTagger tagger = new CoreNLPTagger();
+
         try {
             List<TaggedToken> nlp4jTokens = tokenizer.tokenizeAndTag(source);
             toolMappedTokens.put("NLP4J", nlp4jTokens);
+
+            List<TaggedToken> corenlpTokens = tagger.tagWords(source);
+            toolMappedTokens.put("CORENLP", corenlpTokens);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
