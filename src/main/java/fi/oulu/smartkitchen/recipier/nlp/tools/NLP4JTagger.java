@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Sam on 11/28/2016.
  */
-public class NLP4JTokenizer {
+public class NLP4JTagger {
 
     private NLPDecoder decoder;
 
