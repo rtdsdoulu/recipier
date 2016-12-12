@@ -1,0 +1,39 @@
+
+
+
+
+<div ng-controller="validateController">
+
+<ul class="tab">	
+	<li><a href="javascript:void(0)" class="tablinks" onclick="openNLP(event, 'NLP4J')">NLP4J</1a></li>
+	<li><a href="javascript:void(0)" class="tablinks" onclick="openNLP(event, 'coreNLP')">CoreNLP</a></li>
+</ul>
+
+	
+<div id="nlp4j" class="tabcontent">
+<table>
+  <tr ng-repeat="x in myArray.NLP4J">
+    <td>{{ x.sequenceNo}}</td>
+    <td>{{ x.NametaggedToken }}</td>
+	<td><input type="text"></td>
+    <td>{{ x.reason }}</td>
+	<td>{{ x.correct }}</td>
+  </tr>
+</table>
+</div>
+
+
+<div id="corenlp" class="tabcontent">
+<table>
+  <tr ng-repeat="x in myArray.coreNLP">
+    <td>{{ x.sequenceNo}}</td>
+    <td>{{ x.NametaggedToken }}</td>
+	<td><input type="text"></td>
+    <td>{{ x.reason }}</td>
+	<td>{{ x.correct }}</td>
+  </tr>
+</table>
+</div>
+
+</div>
+
