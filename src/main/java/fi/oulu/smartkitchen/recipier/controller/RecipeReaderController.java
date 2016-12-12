@@ -1,5 +1,6 @@
 package fi.oulu.smartkitchen.recipier.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fi.oulu.smartkitchen.recipier.model.RecipeSource;
 import fi.oulu.smartkitchen.recipier.nlp.model.TaggedRecipe;
 import fi.oulu.smartkitchen.recipier.nlp.model.TaggedToken;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +24,7 @@ public class RecipeReaderController {
 
     private final Logger logger = LoggerFactory.getLogger(RecipeReaderController.class);
 
-    @RequestMapping(value="/analyze", method = RequestMethod.POST, headers = "Content-Type=application/json")
+    @RequestMapping(value="/analyzeold", method = RequestMethod.POST, headers = "Content-Type=application/json")
     public TaggedRecipe analyzeRecipe(@RequestBody RecipeSource source) {
         logger.info("recipe:" + source.getRecipeText());
 
@@ -31,13 +33,15 @@ public class RecipeReaderController {
         return nlpService.getTaggedTokensByTool(source);
     }
 
-    @RequestMapping(value="/analyzes", method = RequestMethod.POST, headers = "Content-Type=application/json")
-    public TaggedRecipe analyzeRecipeStrinh(@RequestBody String source) {
+    @RequestMapping(value="/analyze", method = RequestMethod.POST, headers = "Content-Type=application/json")
+    public TaggedRecipe analyzeRecipeStrinh(@RequestBody String source) throws IOException {
 
+        ObjectMapper mapper = new ObjectMapper();
+        RecipeSource source1 = mapper.readValue(source, RecipeSource.class);
         logger.info("recipe:" + source);
 
         NLPService nlpService = new NLPService();
 
-        return new TaggedRecipe();
+        return nlpService.getTaggedTokensByTool(source1);
     }
 }
