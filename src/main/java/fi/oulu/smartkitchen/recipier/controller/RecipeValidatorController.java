@@ -1,8 +1,6 @@
 package fi.oulu.smartkitchen.recipier.controller;
 
-import fi.oulu.smartkitchen.recipier.model.RecipeSource;
 import fi.oulu.smartkitchen.recipier.nlp.model.TaggedRecipe;
-import fi.oulu.smartkitchen.recipier.nlp.service.NLPService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestBody;

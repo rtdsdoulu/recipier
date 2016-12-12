@@ -30,4 +30,14 @@ public class RecipeReaderController {
 
         return nlpService.getTaggedTokensByTool(source);
     }
+
+    @RequestMapping(value="/analyzes", method = RequestMethod.POST, headers = "Content-Type=application/json")
+    public TaggedRecipe analyzeRecipeStrinh(@RequestBody String source) {
+
+        logger.info("recipe:" + source);
+
+        NLPService nlpService = new NLPService();
+
+        return new TaggedRecipe();
+    }
 }
