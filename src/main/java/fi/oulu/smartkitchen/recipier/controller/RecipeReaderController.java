@@ -1,12 +1,14 @@
 package fi.oulu.smartkitchen.recipier.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fi.oulu.smartkitchen.recipier.dao.RecipeSourceDao;
 import fi.oulu.smartkitchen.recipier.model.RecipeSource;
 import fi.oulu.smartkitchen.recipier.nlp.model.TaggedRecipe;
 import fi.oulu.smartkitchen.recipier.nlp.model.TaggedToken;
 import fi.oulu.smartkitchen.recipier.nlp.service.NLPService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,9 @@ import java.util.Map;
  */
 @RestController
 public class RecipeReaderController {
+
+//    @Autowired
+//    private RecipeSourceDao recipeSourceDao;
 
     private final Logger logger = LoggerFactory.getLogger(RecipeReaderController.class);
 
@@ -41,6 +46,7 @@ public class RecipeReaderController {
         RecipeSource source1 = mapper.readValue(source, RecipeSource.class);
         logger.info("recipe:" + source);
 
+       // recipeSourceDao.insert(source1);
         NLPService nlpService = new NLPService();
 
         return nlpService.getTaggedTokensByTool(source1);

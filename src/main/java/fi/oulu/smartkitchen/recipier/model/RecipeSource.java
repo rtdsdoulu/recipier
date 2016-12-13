@@ -5,8 +5,17 @@ package fi.oulu.smartkitchen.recipier.model;
  */
 public class RecipeSource {
 
+    private Long id;
     private String urlAddress;
     private String recipeText;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getRecipeText() {
         return recipeText;

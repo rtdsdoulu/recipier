@@ -2,10 +2,10 @@
     <form>
 
         <H4 style="text-align:center;">Insert source web site address:</H4>
-        <p style="text-align:center;"><input type="text" name="urlAddress" size="35" ng-model="recipeSource.urlAddress"></input></p>
+        <p style="text-align:center;"><input type="text" size="35" ng-model="address"/></p>
 
         <H4 style="text-align:center;">Insert recipe free text description:</H4>
-        <p style="text-align:center;"> <textarea rows="8" cols="50" name="recipeText" ng-model="recipeSource.recipeText">
+        <p style="text-align:center;"> <textarea rows="8" cols="50" ng-model="recipe">
                 </textarea></p>
 
         <p style="text-align:center;"><button ng-click="clear()">Clear</button> <button ng-click="analyze()">Analyze</button></p>
