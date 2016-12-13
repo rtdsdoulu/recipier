@@ -10,8 +10,8 @@ recipierApp.config(function ($routeProvider) {
             controller: "validateController"
         })
 });
-
-recipierApp.controller("analyzeController", function ($scope, $http, $location) {
+var myJSON;
+recipierApp.controller("analyzeController", function ($scope, $http, $location, $rootScope) {
     console.log("inside the controller");
     $scope.recipeSource = {};
     $scope.address = "";
@@ -31,7 +31,7 @@ recipierApp.controller("analyzeController", function ($scope, $http, $location) 
             'headers': {'Content-Type': 'application/json'},
             'data': $scope.recipeSource
         }).success(function (data) {
-            $scope.myJSON = data;
+            $rootScope.myJSON = data;
             console.log("success");
             console.log(data);
             $location.path("/validatecomp")
@@ -39,11 +39,21 @@ recipierApp.controller("analyzeController", function ($scope, $http, $location) 
     };
 });
 
-recipierApp.controller('validateController', function ($scope, $http) {
+recipierApp.controller('validateController', function ($scope, $http, $rootScope, $location) {
 
 
     $scope.validate = function () {
+        console.log($rootScope.myJSON);
 
+        $http({
+            'url': "http://localhost:8090/validate",
+            'method': 'PUT',
+            'headers': {'Content-Type': 'application/json'},
+            'data': $rootScope.myJSON
+        }).success(function (data) {
+            console.log("success");
+            $location.path("/analyzecomp")
+        });
 
     };
 });

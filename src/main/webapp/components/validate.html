@@ -1,39 +1,63 @@
 
-
-
-
 <div ng-controller="validateController">
 
-<ul class="tab">	
-	<li><a href="javascript:void(0)" class="tablinks" onclick="openNLP(event, 'NLP4J')">NLP4J</1a></li>
-	<li><a href="javascript:void(0)" class="tablinks" onclick="openNLP(event, 'coreNLP')">CoreNLP</a></li>
-</ul>
+    <p>Source website address:</p>
+    <p>{{myJSON.recipeSource.urlAddress}}</p>
 
-	
-<div id="nlp4j" class="tabcontent">
-<table>
-  <tr ng-repeat="x in myArray.NLP4J">
-    <td>{{ x.sequenceNo}}</td>
-    <td>{{ x.NametaggedToken }}</td>
-	<td><input type="text"></td>
-    <td>{{ x.reason }}</td>
-	<td>{{ x.correct }}</td>
-  </tr>
-</table>
+    <ul class="tab">
+        <li><a href="javascript:void(0)" class="tablinks" onclick="openNLP(event, 'NLP4J')">NLP4J</a></li>
+        <li><a href="javascript:void(0)" class="tablinks" onclick="openNLP(event, 'coreNLP')">CoreNLP</a></li>
+    </ul>
+
+
+    <div id="NLP4J" class="tabcontent">
+
+        <h1>NLP4J</h1>
+
+        <table>
+
+            <tr>
+                <th>Seq #</th>
+                <th>Tagged token</th>
+                <th>is correct?</th>
+                <th>Correct tag</th>
+                <th>Reason</th>
+            </tr>
+            <tr ng-repeat="x in myJSON.taggedTokens.NLP4J">
+                <td>{{ x.sequenceNo}}</td>
+                <td>{{ x.taggedToken }}</td>
+                <td><input type="checkbox" ng-checked="{{ x.correct }}"></input></td>
+                <td><input ng-model="x.correctTag"></input></td>
+                <td><input ng-model="x.reason"></input></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div id="coreNLP" class="tabcontent">
+
+
+        <table>
+            <tr>
+                <th>Seq #</th>
+                <th>Tagged token</th>
+                <th>is correct?</th>
+                <th>Correct tag</th>
+                <th>Reason</th>
+            </tr>
+
+            <tr ng-repeat="x in myJSON.taggedTokens.CORENLP">
+                <td>{{ x.sequenceNo}}</td>
+                <td>{{ x.taggedToken }}</td>
+                <td><input type="checkbox" ng-checked="{{ x.correct }}"></input></td>
+                <td><input ng-model="x.correctTag"></input></td>
+                <td><input ng-model="x.reason"></input></td>
+            </tr>
+        </table>
+
+
+    </div>
+    <p style="text-align:center;"><button ng-click="validate()">Save</button></p>
 </div>
 
-
-<div id="corenlp" class="tabcontent">
-<table>
-  <tr ng-repeat="x in myArray.coreNLP">
-    <td>{{ x.sequenceNo}}</td>
-    <td>{{ x.NametaggedToken }}</td>
-	<td><input type="text"></td>
-    <td>{{ x.reason }}</td>
-	<td>{{ x.correct }}</td>
-  </tr>
-</table>
-</div>
-
-</div>
 
