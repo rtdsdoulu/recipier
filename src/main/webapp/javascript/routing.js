@@ -5,13 +5,13 @@ recipierApp.config(function ($routeProvider) {
             templateUrl: "components/analyze.html",
             controller: "analyzeController"
         })
-        .when("/validate", {
+        .when("/validatecomp", {
             templateUrl: "components/validate.html",
             controller: "validateController"
         })
 });
 
-recipierApp.controller("analyzeController", function ($scope, $http) {
+recipierApp.controller("analyzeController", function ($scope, $http, $location) {
     console.log("inside the controller");
     $scope.recipeSource = {};
     $scope.address = "";
@@ -33,6 +33,7 @@ recipierApp.controller("analyzeController", function ($scope, $http) {
             $scope.myJSON = data;
             console.log("success");
             console.log(data);
+            $location.path("/validatecomp")
         });
     };
 });
