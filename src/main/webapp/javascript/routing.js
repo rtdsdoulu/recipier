@@ -25,6 +25,10 @@ recipierApp.controller("analyzeController", function ($scope, $http, $location, 
     $scope.analyze = function () {
         $scope.recipeSource.urlAddress= $scope.address;
         $scope.recipeSource.recipeText = $scope.recipe;
+
+        var loadingText = document.getElementById("loadingText");
+        loadingText.style="";
+
         $http({
             'url': "http://localhost:8090/analyze",
             'method': 'POST',
