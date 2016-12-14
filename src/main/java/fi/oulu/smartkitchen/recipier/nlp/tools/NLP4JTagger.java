@@ -21,7 +21,7 @@ public class NLP4JTagger {
         List<TaggedToken> taggedTokens = new ArrayList<>();
         NLPDecoder wordTagger = nlpDecoderFactory();
         List<NLPNode[]> nodes = wordTagger.decodeDocument(source.getRecipeText());
-        int seqNo = 0;
+        int seqNo = 1;
         for(NLPNode[] nodesArr:nodes){
            for(int i=1;i<nodesArr.length;i++){
                NLPNode node = nodesArr[i];

@@ -1,18 +1,52 @@
 package fi.oulu.smartkitchen.recipier.model;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by Sam on 12/13/2016.
  */
+@Entity
+@Table(name = "tokens")
 public class Token {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private RecipeSource source;
-    private AnalysisTool tool;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private RecipeSource recipes;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private AnalysisTool analysis_tool;
+
+    @NotNull
     private String token;
+
+    @NotNull
     private String tag;
+
+    @NotNull
     private boolean isCorrect;
     private String correctTag;
     private String comment;
+
+    public Token() {
+    }
+
+    public Token(RecipeSource source, AnalysisTool tool, String token, String tag, boolean isCorrect, String correctTag, String comment) {
+        this.recipes = source;
+        this.analysis_tool = tool;
+        this.token = token;
+        this.tag = tag;
+        this.isCorrect = isCorrect;
+        this.correctTag = correctTag;
+        this.comment = comment;
+    }
+
+    public Token(Long id){
+        this.id = id;
+    }
 
     public Long getId() {
         return id;
@@ -22,20 +56,20 @@ public class Token {
         this.id = id;
     }
 
-    public RecipeSource getSource() {
-        return source;
+    public RecipeSource getRecipes() {
+        return recipes;
     }
 
-    public void setSource(RecipeSource source) {
-        this.source = source;
+    public void setRecipes(RecipeSource recipes) {
+        this.recipes = recipes;
     }
 
-    public AnalysisTool getTool() {
-        return tool;
+    public AnalysisTool getAnalysis_tool() {
+        return analysis_tool;
     }
 
-    public void setTool(AnalysisTool tool) {
-        this.tool = tool;
+    public void setAnalysis_tool(AnalysisTool analysis_tool) {
+        this.analysis_tool = analysis_tool;
     }
 
     public String getToken() {

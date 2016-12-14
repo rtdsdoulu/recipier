@@ -1,17 +1,14 @@
 package fi.oulu.smartkitchen.recipier.dao;
 
 import fi.oulu.smartkitchen.recipier.model.RecipeSource;
-import org.springframework.stereotype.Component;
+import org.springframework.data.repository.CrudRepository;
 
-import javax.sql.DataSource;
+import javax.transaction.Transactional;
 
 /**
  * Created by Sam on 12/13/2016.
  */
-@Component
-public interface RecipeSourceDao {
+@Transactional
+public interface RecipeSourceDao extends CrudRepository<RecipeSource, Long>{
 
-    public void insert(RecipeSource source);
-
-    void setDataSource(DataSource dataSource);
 }

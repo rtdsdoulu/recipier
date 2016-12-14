@@ -5,6 +5,7 @@ import fi.oulu.smartkitchen.recipier.nlp.model.TaggedRecipe;
 import fi.oulu.smartkitchen.recipier.nlp.model.TaggedToken;
 import fi.oulu.smartkitchen.recipier.nlp.tools.CoreNLPTagger;
 import fi.oulu.smartkitchen.recipier.nlp.tools.NLP4JTagger;
+import org.springframework.stereotype.Service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.util.Map;
 /**
  * Created by Sam on 11/28/2016.
  */
+@Service
 public class NLPService {
 
 

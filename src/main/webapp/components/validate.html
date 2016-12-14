@@ -12,8 +12,6 @@
 
     <div id="NLP4J" class="tabcontent">
 
-        <h1>NLP4J</h1>
-
         <table>
 
             <tr>
@@ -26,7 +24,7 @@
             <tr ng-repeat="x in myJSON.taggedTokens.NLP4J">
                 <td>{{ x.sequenceNo}}</td>
                 <td>{{ x.taggedToken }}</td>
-                <td><input type="checkbox" ng-checked="{{ x.correct }}"></input></td>
+                <td><input type="checkbox" ng-checked="{{ x.correct }}" ng-model="x.correct"></input></td>
                 <td><input ng-model="x.correctTag"></input></td>
                 <td><input ng-model="x.reason"></input></td>
             </tr>
@@ -35,7 +33,6 @@
 
 
     <div id="coreNLP" class="tabcontent">
-
 
         <table>
             <tr>
@@ -49,7 +46,7 @@
             <tr ng-repeat="x in myJSON.taggedTokens.CORENLP">
                 <td>{{ x.sequenceNo}}</td>
                 <td>{{ x.taggedToken }}</td>
-                <td><input type="checkbox" ng-checked="{{ x.correct }}"></input></td>
+                <td><input type="checkbox" ng-checked="{{ x.correct }}" ng-model="x.correct"></input></td>
                 <td><input ng-model="x.correctTag"></input></td>
                 <td><input ng-model="x.reason"></input></td>
             </tr>
